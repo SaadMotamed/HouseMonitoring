@@ -16,7 +16,6 @@ firebase = firebase.FirebaseApplication('https://raspberry3-8cb8d.firebaseio.com
 while True:
     humidity, temperature = Adafruit_DHT.read_retry(Adafruit_DHT.DHT22, '4')
     time.sleep(5)
-# for i in range(10):
     if humidity is not None and temperature is not None:
         print('Temp={0:0.1f}*  Humidity={1:0.1f}%'.format(temperature, humidity))
         firebase.patch('/data',{'temp':temperature , 'humd':humidity})
